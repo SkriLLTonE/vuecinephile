@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway';
+    font-weight: 400;
+    text-decoration: none;
+    list-style: none;
+}
+
+.container {
+    max-width: 1320px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+body {
+    background: #141414;
+    // overflow-x: hidden;
+    color: white;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+#app {
+    height: 100%;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.content {
+    flex: 1 0 auto;
+    height: 100%;
+}
+
+
+@mixin media($size) {
+    @media screen and (max-width:#{$size}px) {
+        @content
+    }
+}
