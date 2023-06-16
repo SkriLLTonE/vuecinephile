@@ -11,7 +11,6 @@ export const useUpcoming = defineStore({
     actions: {
         async getUpcoming() {
             const res = await axios.get(`${this.url}?api_key=${apiKey}&language=ru-RU&page=1`)
-            console.log(res);
             const results = res.data.results
             const arrayWithPhoto = results.filter(movie => movie.backdrop_path != null)
             this.upcoming = arrayWithPhoto
