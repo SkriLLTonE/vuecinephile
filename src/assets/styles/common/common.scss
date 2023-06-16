@@ -22,25 +22,12 @@ body {
     color: white;
 }
 
-html,
-body {
-    height: 100%;
-}
-
-#app {
-    height: 100%;
-}
-
 .wrapper {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    height: 100%;
 }
 
-.content {
-    flex: 1 0 auto;
-    height: 100%;
-}
 
 
 @mixin media($size) {
