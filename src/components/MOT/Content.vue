@@ -9,21 +9,17 @@
             <Swiper-slide class="main__video-item" v-for="(item, idx) in content" :key="item.id" @click="getItem(item)">
                 <img v-lazy="imgUrlFull + item.poster_path" src="@/assets/images/poster.png" alt=""
                     class="main__video-item-img">
-                <router-link :to="`${props.type}/`" class="main__video-item-link"/>
+                <router-link :to="`${props.type}/`" class="main__video-item-link" />
                 <h2 class="main__video-item-title">{{ item.title || item.name }}</h2>
             </Swiper-slide>
             <Swiper-slide>
-                <router-link :to="`${props.type}/`" class="main__video-item " >
+                <router-link :to="`${props.type}/`" class="main__video-item ">
                     <span>{{ props.type == 'movie' ? 'Все фильмы' : 'Все сериалы' }}</span>
                 </router-link>
             </Swiper-slide>
         </Swiper>
-        <div class="main__inf" :class="{active: open}" ref="inf">
-            <InfoBlock 
-                :current="current"
-                :type="type" 
-                @close="close"
-            />
+        <div class="main__inf" :class="{ active: open }" ref="inf">
+            <InfoBlock :current="current" :type="type" @close="close" />
         </div>
     </section>
 </template>
@@ -38,7 +34,7 @@ import { usePopular } from '@/stores/popular'
 import { onMounted, ref, computed } from "vue";
 import { imgUrl, imgUrlFull } from '@/static.js'
 import InfoBlock from "@/components/InfoBlock/InfoBlock.vue";
-
+import { useItemId } from '@/stores/itemId'
 
 
 const props = defineProps(['type'])
@@ -71,9 +67,15 @@ onMounted(() => {
     popular.getPopular({ type: props.type })
 })
 
+const itemIdStore = useItemId()
+
+let current = ref(null)
+let inf = ref(null)
+let open = ref(false)
 const getItem = async item => {
     current.value = null
-    current.value = item
+    await itemIdStore.getItemId({ type: props.type, id: item.id })
+    current.value = props.type == 'movie' ? itemIdStore.movie : itemIdStore.tv
     open.value = true
     let infTop = inf.value.offsetTop
     window.scrollTo({
@@ -82,9 +84,7 @@ const getItem = async item => {
     })
 }
 
-let current = ref(null)
-let inf = ref(null)
-let open = ref(false)
+
 
 const close = () => {
     open.value = false
