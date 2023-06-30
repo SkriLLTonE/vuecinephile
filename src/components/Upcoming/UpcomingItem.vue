@@ -1,18 +1,16 @@
 <template>
-    <Transition name="upcoming-item" mode="out-in">
-        <div class=" main__upcoming-item" v-if="slideView == idx">
+    <transition name="upcoming-item" mode="out-in">
+        <div class="main__upcoming-item" v-if="slideView == index">
             <img :src="imgUrlFull + movie.backdrop_path" class="main__upcoming-item-img" alt="">
             <div class="main__upcoming-content">
                 <div class="main__upcoming-info">
                     <h1 class="main__upcoming-content-title">{{ movie.title }}</h1>
-                    <p class="main__upcoming-content-text">
-                        {{ movie.overview }}
-                    </p>
+                    <p class="main__upcoming-content-text">{{ movie.overview }}</p>
                     <BtnMore />
                 </div>
             </div>
             <div class="main__upcoming-next" @click="$emit('slideNext')">
-                <img :src="imgUrl + next.backdrop_path" alt="" class="main__upcoming-next-img">
+                <img :src="imgUrl + next.backdrop_path" class="main__upcoming-next-img" alt="">
                 <div class="main__upcoming-next-content">
                     <span class="next">Следующий</span>
                     <span class="main__upcoming-next-title">{{ next.title }}</span>
@@ -24,8 +22,8 @@
 </template>
 
 <script setup>
-import BtnMore from '../UI/BtnMore.vue';
-import { imgUrl, imgUrlFull } from "@/static.js";
+import BtnMore from '@/components/UI/BtnMore.vue'
+import { imgUrl, imgUrlFull } from '@/static.js'
 
 const props = defineProps({
     movie: {
@@ -36,15 +34,14 @@ const props = defineProps({
         type: Object,
         required: true,
     },
-    idx: {
-        type: Number
+    index: {
+        type: Number,
     },
     slideView: {
-        type: Number
+        type: Number,
     }
 })
 
 
 
 </script>
-

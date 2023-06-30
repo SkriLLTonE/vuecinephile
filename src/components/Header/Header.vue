@@ -1,29 +1,29 @@
 <template>
     <header class="header">
-        <nav class="nav">
+        <nav class="nav" id="navHeight">
             <div class="container">
                 <div class="nav__container">
                     <router-link to="/" class="">
-                        <img src="@/assets/images/Logo.svg" alt="">
+                        <img src="../../assets/images/Logo.svg" alt="">
                     </router-link>
                     <button class="nav__btn" @click="burgerOn">
                         <img src="@/assets/images/menu.svg" alt="">
                     </button>
-                    <ul class="nav__list" :class="{ active: burger }">
+                    <nav class="nav__list" :class="{ active: burger }">
                         <li class="nav__close" @click="burgerOff">
                             <img src="@/assets/images/closeMenu.svg" alt="">
                         </li>
-                        <li class="nav__list-item" v-for="link in links " :key="link.title" @click="burger = false">
+                        <li class="nav__list-item" v-for="link in links" :key="link.title" @click="burger=false">
                             <router-link class="nav__list-link" :to="link.url">
                                 {{ link.title }}
                             </router-link>
                         </li>
-                        <li class="nav__list-item" @click="burger = false">
+                        <li class="nav__list-item" @click="burger=false">
                             <router-link to="/search">
                                 <img src="@/assets/images/search.svg" alt="">
                             </router-link>
                         </li>
-                    </ul>
+                    </nav>
                 </div>
             </div>
         </nav>
@@ -34,10 +34,11 @@
 import { ref, reactive } from 'vue'
 
 const links = reactive([
-    { title: 'Главная', url: '/' },
-    { title: 'Фильмы', url: '/movie' },
-    { title: 'Сериалы', url: '/tv' },
+    { title: "Главная", url: '/' },
+    { title: "Фильмы", url: '/movie' },
+    { title: "Сериалы", url: '/tv' },
 ])
+
 const burger = ref(false)
 
 const burgerOn = () => {
@@ -47,7 +48,5 @@ const burgerOn = () => {
 const burgerOff = () => {
     burger.value = false
 }
-
-
 
 </script>

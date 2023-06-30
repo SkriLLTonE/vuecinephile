@@ -1,6 +1,6 @@
 <template>
     <div class="loading">
-        <div class="loading__spiner"></div>
+        <div class="loading__spinner"></div>
     </div>
 </template>
 
@@ -9,31 +9,30 @@
 </script>
 
 <style lang="scss">
-.loading {
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    .loading {
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        &__spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid transparent;
+            border-top: 2px solid green;
+            border-radius: 50%;
 
-    &__spiner {
-        width: 50px;
-        height: 50px;
-        border: 2px solid transparent;
-        border-top: 5px solid green;
-        border-radius: 50%;
-        animation: loading 1s infinite ease-in-out;
-    }
-}
-
-@keyframes loading {
-    0% {
-        transform: rotate(0deg);
+            animation: loading 1s infinite ease-in-out;
+        }
     }
 
-    100% {
-        transform: rotate(360deg);
-
+    @keyframes loading {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
     }
-}
 </style>

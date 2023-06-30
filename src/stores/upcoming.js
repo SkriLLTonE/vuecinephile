@@ -1,6 +1,7 @@
-import axios from "axios";
+import axios from 'axios'
 import { defineStore } from 'pinia'
-import { apiKey } from "../static";
+import { apiKey } from '../static'
+
 
 export const useUpcoming = defineStore({
     id: 'upcoming',
@@ -8,12 +9,15 @@ export const useUpcoming = defineStore({
         url: 'https://api.themoviedb.org/3/movie/upcoming',
         upcoming: null,
     }),
+    
     actions: {
         async getUpcoming() {
             const res = await axios.get(`${this.url}?api_key=${apiKey}&language=ru-RU&page=1`)
             const results = res.data.results
             const arrayWithPhoto = results.filter(movie => movie.backdrop_path != null)
+            // this.upcoming = results
             this.upcoming = arrayWithPhoto
+            
         }
     }
 })

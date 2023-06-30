@@ -1,6 +1,6 @@
 <template>
     <router-link to="/" class="more">
-        <img src="@/assets/images/more.svg" class="more__icon" alt="">
+        <img src="@/assets/images/more.svg" class="more__item" alt="">
         <span class="more__text">Подробнее</span>
     </router-link>
 </template>
@@ -23,6 +23,7 @@
         font-size: 20px;
         font-weight: 400;
         line-height: 30px;
+        letter-spacing: 0em;
         color: white;
     }
 }

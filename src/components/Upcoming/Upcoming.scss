@@ -5,8 +5,8 @@
 
     @include media(576) {
         height: 75vh;
-    }
 
+    }
     &-item {
         height: 100%;
 
@@ -19,6 +19,7 @@
             object-fit: cover;
             z-index: -1;
         }
+
     }
 
     &-content {
@@ -40,7 +41,6 @@
                 font-size: 30px;
                 line-height: 64px;
             }
-
             @include media(576) {
                 font-size: 24px;
                 line-height: 36px;
@@ -48,7 +48,7 @@
         }
 
         &-text {
-            color: #fff;
+            color: white;
             font-size: 20px;
             font-weight: 400;
             line-height: 30px;
@@ -71,12 +71,12 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         gap: 50px;
 
         @include media(576) {
             gap: 30px;
         }
-
     }
 
     &-next {
@@ -101,7 +101,7 @@
             width: 50%;
             height: 100%;
             object-fit: cover;
-            border-radius: 0 10px 10px 0;
+            border-radius: 10px;
         }
 
         &-content {
@@ -118,9 +118,9 @@
         }
 
         &-title {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
-            line-height: 21px;
+            line-height: 19px;
             color: white;
         }
 
@@ -129,7 +129,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background: #FFFFFF80;
+            background: #ffffff80;
             height: 5px;
             border-radius: 0 0 10px 10px;
 
@@ -138,20 +138,27 @@
                 display: block;
                 height: 5px;
                 background: #fff;
+                border-radius: 0 0 10px 10px;
                 animation: time 5000ms ease-in-out infinite;
             }
         }
+
     }
 }
 
 .upcoming-enter-active,
-.upcoming-leave-active {
+.upcoming-enter-leave {
     transition: 0.3s ease-in-out;
 }
 
 .upcoming-enter-from {
     transform: scale(1.2);
     opacity: 0;
+}
+
+.upcoming-leave-to {
+    transform: scale(1);
+    opacity: 1;
 }
 
 .upcoming-item-enter-active,
@@ -163,11 +170,11 @@
     transform: scale(1);
     opacity: 0;
 }
-
-.upcoming-item-leave-to {
-    transform: scale(1.2);
-    opacity: 0;
+.upcoming-item-enter-to {
+    transform: scale(1);
+    opacity: 1;
 }
+
 
 @keyframes time {
     0% {

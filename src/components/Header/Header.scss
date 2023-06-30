@@ -1,6 +1,6 @@
 .header {
     position: relative;
-    z-index: 100;
+    z-index: 300;
 }
 
 .nav {
@@ -25,17 +25,16 @@
 
     &__btn {
         display: none;
-
         @include media(800) {
             display: flex;
         }
+
     }
 
     &__list {
         display: flex;
         gap: 30px;
         align-items: center;
-
         @include media(800) {
             position: fixed;
             width: 100%;
@@ -47,38 +46,41 @@
             top: 0;
             left: 0;
             padding: 20px;
-            transform: translateX(-100%);
             transition: 0.2s;
+            transform:translateX(100%);
             overflow-y: auto;
-
+            
+            
             &.active {
                 transform: translateX(0);
             }
         }
-
         &-link {
             font-size: 18px;
             font-weight: 700;
             line-height: 21px;
-            color: #FFFFFF99;
+            color: #ffffff99;
             position: relative;
             padding: 34px 0;
             display: flex;
             justify-content: center;
 
             &.router-link-exact-active {
-                color: #fff;
+                color: white;
             }
 
             &::after {
                 content: '';
                 position: absolute;
-                background: #149A03;
+                background: #149a03;
                 width: 0;
                 height: 0;
-                bottom: 10px;
-                transition: 0.2s;
                 border-radius: 50%;
+                bottom: 10px;
+                transition: 200ms;
+                border-radius: 50%;
+
+
             }
 
             &.router-link-exact-active::after {
@@ -86,8 +88,8 @@
                 width: 15px;
                 height: 15px;
             }
-        }
 
+        }
     }
 
     &__close {
@@ -98,10 +100,8 @@
         right: 30px;
         top: 30px;
         display: none;
-
         @include media(800) {
             display: flex;
         }
     }
-
 }
